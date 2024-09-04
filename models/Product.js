@@ -8,7 +8,7 @@ const productSchema = new Schema({
     category: { type: Schema.Types.ObjectId, ref: 'Category', required: true},
     materials: [String],  // materials used in an array
     images: [String],  // ???? how to do
-    stock: { type: Number, default: 0 },
+    stock: { type: Number, default: 1 },
     createdAt: { type: Date, default: Date.now }
 });
 

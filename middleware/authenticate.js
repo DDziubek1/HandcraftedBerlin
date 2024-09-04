@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const authenticate = (req, res, next) => {
+export const authenticate = (req, res, next) => {
   try {
     const token = req.headers.authorization?.split(" ")[1];
 
@@ -8,7 +8,7 @@ const authenticate = (req, res, next) => {
 
     const { _id, email, role } = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.user = { _id, email, role };
+    req.user = { _id, email };
     
     next();
   } catch (error) {

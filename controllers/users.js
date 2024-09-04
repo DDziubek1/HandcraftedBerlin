@@ -35,15 +35,63 @@ export const getProfile = asyncHandler(async (req, res, next) => {
   });
 
 export const updateUser = asyncHandler(async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate (
-        id, // id of the user to update
-         req.body // data to update
-    , { new: true }); // return the updated user
-    if (!user) throw new ErrorResponse("User not found", 404);
+    const token = req.headers.authorization.split(' ')[1]; // Extract token from Authorization header
+
+    if (!token) {
+        throw new ErrorResponse("No token provided", 401);
+    }
+
+    let decoded;
+    try {
+        decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify and decode the token
+    } catch (error) {
+        throw new ErrorResponse("Invalid token", 401);
+    }
+
+    const userId = decoded._id; // Extract user ID from the decoded token
+
+    const user = await User.findByIdAndUpdate(
+        userId, // Find user by ID
+        req.body, // Data to update
+        { new: true } // Return the updated user
+    );
+
+    if (!user) {
+        throw new ErrorResponse("User not found", 404);
+    }
+
     res.status(200).json(user);
 }
 );
+
+export const getUserInfoById = asyncHandler(async (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1]; // Extract token from Authorization header
+
+    if (!token) {
+        throw new ErrorResponse("No token provided", 401);
+    }
+
+    let decoded;
+    try {
+        decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify and decode the token
+    } catch (error) {
+        throw new ErrorResponse("Invalid token", 401);
+    }
+
+    const userId = decoded._id; // Extract user ID from the decoded token
+
+    const user = await User.findById(userId); // Find user by ID
+
+    if (!user) { 
+        throw new ErrorResponse("User not found", 404);
+    }
+
+    res.status(200).json(user);
+}
+);
+
+
+
 
 export const deleteUser = asyncHandler(async (req, res) => {
     const { id } = req.params;
