@@ -1,5 +1,5 @@
 import Cart from "../models/Cart.js";
-import ErrorResponse from "../utils/errorResponse.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import cartsSchema from "../schema/cartsSchema.js";
 

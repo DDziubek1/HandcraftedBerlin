@@ -1,5 +1,5 @@
 import Product from "../models/Product.js";
-import ErrorResponse from "../utils/errorResponse.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import productsSchema from "../schema/productsSchema.js";
 import authenticate from "../middleware/authenticate.js";

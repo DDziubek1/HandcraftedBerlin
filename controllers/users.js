@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import ErrorResponse from "../utils/errorResponse.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import usersSchema from "../schema/usersSchema.js";
 import bcrypt from "bcrypt";

@@ -1,5 +1,5 @@
 import Order from "../models/Order.js";
-import ErrorResponse from "../utils/errorResponse.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import ordersSchema from "../schema/ordersSchema.js";
 import Joi from "joi";

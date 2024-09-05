@@ -1,5 +1,5 @@
 
-import ErrorResponse from "../utils/errorResponse.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import categoriesSchema from "../schema/categoriesSchema.js";
 import Category from "../models/Category.js";
