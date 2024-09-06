@@ -13,7 +13,7 @@ import { extname } from 'path';
 import { upload } from './middleware/multer.js';
 
 const app = express();
-const port =  process.env.port || 3000;
+const PORT =  process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -37,6 +37,6 @@ app.post("/upload-file", upload.array("images", 8),cloudinaryUpload,  (req, res)
   });
 
 
-app.listen(port, () => {
-  console.log(`Main app listening at <http://localhost>:${port}`);
+app.listen(PORT, () => {
+  console.log(`Main app listening at <http://localhost>:${PORT}`);
 });
